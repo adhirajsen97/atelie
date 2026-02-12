@@ -1,0 +1,201 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Atelie Brand Colors - Light Theme */
+    --background: 48 11% 97%; /* #FAFAF8 warm white */
+    --background-secondary: 48 7% 94%; /* #F1F1EE */
+    --foreground: 0 0% 11%; /* #1C1C1C deep graphite */
+    --foreground-secondary: 0 0% 42%; /* #6B6B6B */
+    --foreground-muted: 0 0% 60%; /* #9A9A9A */
+    
+    --card: 0 0% 100%; /* #FFFFFF */
+    --card-foreground: 0 0% 11%;
+    
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 11%;
+    
+    --primary: 217 82% 65%; /* #5B8DEF cool studio blue */
+    --primary-foreground: 0 0% 100%;
+    
+    --secondary: 48 7% 94%;
+    --secondary-foreground: 0 0% 11%;
+    
+    --muted: 48 7% 94%;
+    --muted-foreground: 0 0% 42%;
+    
+    --accent: 217 82% 65%;
+    --accent-foreground: 0 0% 100%;
+    
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    
+    --border: 48 9% 90%; /* #E6E6E2 */
+    --input: 48 9% 90%;
+    --ring: 217 82% 65%;
+    --radius: 0.875rem; /* 14px */
+    
+    /* Custom Atelie vars */
+    --atelie-bg: #FAFAF8;
+    --atelie-bg-secondary: #F1F1EE;
+    --atelie-surface: #FFFFFF;
+    --atelie-divider: #E6E6E2;
+    --atelie-text: #1C1C1C;
+    --atelie-text-secondary: #6B6B6B;
+    --atelie-text-muted: #9A9A9A;
+    --atelie-accent: #5B8DEF;
+    --atelie-shadow: 0 6px 20px rgba(0, 0, 0, 0.04);
+    --atelie-shadow-hover: 0 12px 32px rgba(0, 0, 0, 0.08);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    @apply bg-[#FAFAF8] text-[#1C1C1C] antialiased;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-weight: 400;
+    letter-spacing: -0.01em;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-weight: 500;
+    letter-spacing: -0.02em;
+  }
+}
+
+@layer utilities {
+  /* Atelie Utilities */
+  .atelie-surface {
+    background: var(--atelie-surface);
+    box-shadow: var(--atelie-shadow);
+    border-radius: 14px;
+  }
+  
+  .atelie-surface-hover {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .atelie-surface-hover:hover {
+    box-shadow: var(--atelie-shadow-hover);
+    transform: translateY(-2px);
+  }
+  
+  .atelie-text-gradient {
+    background: linear-gradient(135deg, #1C1C1C 0%, #5B8DEF 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
+  .atelie-glass {
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+  
+  /* Toggle Switch Animation */
+  .toggle-checkbox:checked {
+    right: 0;
+    border-color: #5B8DEF;
+  }
+  
+  .toggle-checkbox:checked + .toggle-label {
+    background-color: #5B8DEF;
+  }
+  
+  /* Animations */
+  .animate-fade-in {
+    animation: fadeIn 0.4s ease-out forwards;
+  }
+  
+  .animate-slide-up {
+    animation: slideUp 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  }
+  
+  .animate-scale-in {
+    animation: scaleIn 0.3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  
+  @keyframes slideUp {
+    from { 
+      opacity: 0; 
+      transform: translateY(20px); 
+    }
+    to { 
+      opacity: 1; 
+      transform: translateY(0); 
+    }
+  }
+  
+  @keyframes scaleIn {
+    from { 
+      opacity: 0; 
+      transform: scale(0.95); 
+    }
+    to { 
+      opacity: 1; 
+      transform: scale(1); 
+    }
+  }
+  
+  /* Heart beat animation */
+  @keyframes heartBeat {
+    0% { transform: scale(1); }
+    25% { transform: scale(1.2); }
+    50% { transform: scale(1); }
+    75% { transform: scale(1.15); }
+    100% { transform: scale(1); }
+  }
+  
+  .animate-heart-beat {
+    animation: heartBeat 0.4s ease-in-out;
+  }
+}
+
+/* Custom scrollbar - minimal */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #E6E6E2;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #D1D1CD;
+}
+
+/* Focus styles */
+*:focus-visible {
+  outline: 2px solid #5B8DEF;
+  outline-offset: 2px;
+}
+
+/* Selection */
+::selection {
+  background: rgba(91, 141, 239, 0.2);
+  color: #1C1C1C;
+}
